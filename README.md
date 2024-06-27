@@ -5,26 +5,27 @@ This project deploys a machine learning model using FastAPI. The application pro
 # Application setup commands
 
 Run these commands to set up your virtual environment:
+
     Create virtual environment and activate it:
-        python -m venv env
-        source env/bin/activate     # On Windows use `env\Scripts\activate` or `env\Scripts\Activate.ps1`
+        python -m venv app/env
+        source app/env/bin/activate     # On Windows use `app\env\Scripts\activate` or `app\env\Scripts\Activate.ps1`
 
     Install dependencies:
         pip install --upgrade pip
         pip install -r requirements.txt 
 
     Configure Environment Variables:
-        cp .env.example .env
+        cp app\.env.template app\.env   # On Windows use Copy-Item app\.env.template app\.env
     
     Run the application:
         fastapi dev app/api/main.py
     Using docker:
-        docker-compose -f docker-compose.yml up --build
+        docker-compose -f docker-compose.yaml up --build
 
 ## Project Structure
 
 ```plaintext
-my-fastapi-project/
+Medical-Insurance-Cost-Prediction-Classical-ML/
 │
 ├── app/
 │   ├── __pycache__
@@ -59,7 +60,7 @@ my-fastapi-project/
 |   └── .env
 |
 ├── requirements.txt
-├── Dockerfile
+├── dockerfile
 ├── docker-compose.yaml
 ├── .dockerignore
 ├── .gitignore
