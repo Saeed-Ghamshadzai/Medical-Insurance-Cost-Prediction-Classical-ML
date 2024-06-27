@@ -4,9 +4,16 @@ This project deploys a machine learning model using FastAPI. The application pro
 
 # Application setup commands
 
-python -m venv env
-source env/bin/activate  # On Windows use `env\Scripts\activate` or `env\Scripts\Activate.ps1`
-pip install -r requirements.txt
+Run these commands to set up your virtual environment:
+    python -m venv env
+    source env/bin/activate     # On Windows use `env\Scripts\activate` or `env\Scripts\Activate.ps1`
+    pip install -r requirements.txt     # Install dependencies 
+    cp .env.example .env    # Configure Environment Variables
+    
+    Run the application:
+        fastapi dev app/api/main.py
+    Using docker:
+        docker-compose -f docker-compose.yml up --build
 
 ## Project Structure
 

@@ -95,7 +95,7 @@ poetry.toml
 
 # Environments
 .venv
-# .env
+.env
 env/
 venv/
 ENV/
