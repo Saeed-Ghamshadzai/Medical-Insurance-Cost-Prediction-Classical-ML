@@ -17,7 +17,7 @@ Run these commands to set up your virtual environment:
         pip install -r requirements.txt 
 
     Configure Environment Variables:
-        cp app/.env.template app/.env   # On Windows use Copy-Item app\.env.template app\.env
+        cp app/.env.template app/.env
     
     Run the application:
         fastapi dev app/api/main.py

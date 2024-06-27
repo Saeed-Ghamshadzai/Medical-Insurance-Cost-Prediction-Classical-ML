@@ -124,8 +124,3 @@ target/
 # OS-specific files
 .DS_Store
 Thumbs.db
-
-# Docker-related files
-docker-compose.yaml
-dockerfile
-.dockerignore
