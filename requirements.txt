@@ -1,0 +1,9 @@
+scikit-learn
+numpy
+pandas
+uvicorn
+fastapi
+pydantic
+setuptools
+python-dotenv
+pytest
