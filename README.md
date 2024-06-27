@@ -2,6 +2,8 @@
 
 This project deploys a machine learning model using FastAPI. The application provides a REST API to make predictions based on input data.
 
+Link to the notebook on Kaggle: https://www.kaggle.com/code/saeedghamshadzai/medical-insurance-cost-prediction-classical-ml
+
 # Application setup commands
 
 Run these commands to set up your virtual environment:
@@ -15,7 +17,7 @@ Run these commands to set up your virtual environment:
         pip install -r requirements.txt 
 
     Configure Environment Variables:
-        cp app\.env.template app\.env   # On Windows use Copy-Item app\.env.template app\.env
+        cp app/.env.template app/.env   # On Windows use Copy-Item app\.env.template app\.env
     
     Run the application:
         fastapi dev app/api/main.py
@@ -28,12 +30,9 @@ Run these commands to set up your virtual environment:
 Medical-Insurance-Cost-Prediction-Classical-ML/
 │
 ├── app/
-│   ├── __pycache__
 │   ├── api
 │   │   ├── __init__.py
-│   │   ├── data.py
-│   │   └── csv
-│   |       └── medical_insurance.csv
+│   │   └── main.py
 |   |
 │   ├── env
 │   ├── model/
@@ -50,7 +49,6 @@ Medical-Insurance-Cost-Prediction-Classical-ML/
 │   │   └── dataset/
 │   │       └── medical_insurance.csv
 |   |
-│   ├── packages.egg-info
 │   |── tests/
 │   |    ├── __init__.py
 │   |    └── test_main.py
@@ -64,5 +62,4 @@ Medical-Insurance-Cost-Prediction-Classical-ML/
 ├── docker-compose.yaml
 ├── .dockerignore
 ├── .gitignore
-├── .pytest_cache
 └── README.md

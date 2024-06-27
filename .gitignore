@@ -127,6 +127,5 @@ Thumbs.db
 
 # Docker-related files
 docker-compose.yaml
-docker-compose.yml
-Dockerfile
+dockerfile
 .dockerignore
