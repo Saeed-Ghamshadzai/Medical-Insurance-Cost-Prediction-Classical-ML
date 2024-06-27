@@ -32,6 +32,7 @@ Medical-Insurance-Cost-Prediction-Classical-ML/
 ├── app/
 │   ├── api
 │   │   ├── __init__.py
+│   │   ├── app.log
 │   │   └── main.py
 |   |
 │   ├── env
