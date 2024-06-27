@@ -5,6 +5,7 @@ This project deploys a machine learning model using FastAPI. The application pro
 # Application setup commands
 
 Run these commands to set up your virtual environment:
+
     Create virtual environment and activate it:
         python -m venv env
         source env/bin/activate     # On Windows use `env\Scripts\activate` or `env\Scripts\Activate.ps1`
