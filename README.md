@@ -10,6 +10,7 @@ Run these commands to set up your virtual environment:
         source env/bin/activate     # On Windows use `env\Scripts\activate` or `env\Scripts\Activate.ps1`
 
     Install dependencies:
+        pip install --upgrade pip
         pip install -r requirements.txt 
 
     Configure Environment Variables:
