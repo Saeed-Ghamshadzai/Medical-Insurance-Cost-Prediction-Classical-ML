@@ -5,10 +5,15 @@ This project deploys a machine learning model using FastAPI. The application pro
 # Application setup commands
 
 Run these commands to set up your virtual environment:
-    python -m venv env
-    source env/bin/activate     # On Windows use `env\Scripts\activate` or `env\Scripts\Activate.ps1`
-    pip install -r requirements.txt     # Install dependencies 
-    cp .env.example .env    # Configure Environment Variables
+    Create virtual environment and activate it:
+        python -m venv env
+        source env/bin/activate     # On Windows use `env\Scripts\activate` or `env\Scripts\Activate.ps1`
+
+    Install dependencies:
+        pip install -r requirements.txt 
+
+    Configure Environment Variables:
+        cp .env.example .env
     
     Run the application:
         fastapi dev app/api/main.py
@@ -37,17 +42,22 @@ my-fastapi-project/
 │   │   │   ├── model.py
 │   │   └── trained_model-0.1.0.pkl
 |   |
-│   ├── notebook
+│   ├── data/
+│   │   ├── __init__.py
+│   │   ├── data.py
+│   │   └── dataset/
+│   │       └── medical_insurance.csv
+|   |
 │   ├── packages.egg-info
 │   |── tests/
 │   |    ├── __init__.py
 │   |    └── test_main.py
 |   |
 |   ├── setup.py
-|   ├── requirements.txt
 |   ├── pytest.ini
 |   └── .env
 |
+├── requirements.txt
 ├── Dockerfile
 ├── docker-compose.yaml
 ├── .dockerignore
