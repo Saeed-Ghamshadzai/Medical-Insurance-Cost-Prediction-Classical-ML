@@ -7,7 +7,7 @@ warnings.filterwarnings('ignore')
 
 class Preprocessor:
     """
-    Class to preprocess input data for machine learning modeling.
+    Class to preprocess input data.
     """
 
     def __init__(self):
@@ -37,6 +37,7 @@ class Preprocessor:
         """
         df = data.copy()
 
+        # Encode region feature
         for i in ['northeast', 'northwest', 'southeast', 'southwest']:
             region_encoder = lambda x: 1 if x==i else 0
             df[i] = df['region'].map(region_encoder)
@@ -44,7 +45,7 @@ class Preprocessor:
         else:
             df.drop(columns=['region'], inplace=True)
 
-
+        # Encode binary features
         sex_encoder = lambda x: 1 if x=='male' else 0
         smoker_encoder = lambda x: 1 if x=='yes' else 0
         
@@ -55,10 +56,10 @@ class Preprocessor:
 
     def scaler(self, data):
         """
-        Scale the features using MinMaxScaler.
+        Scale the features and target using MinMaxScaler.
 
         Args:
-            data (DataFrame): Input data containing features to scale.
+            data (DataFrame): Input data containing features and target to scale.
 
         Returns:
             DataFrame: Scaled data.
@@ -75,15 +76,17 @@ class Preprocessor:
 
     def fit(self, data):
         """
-        Fit preprocessing transformers to the input data.
+        Fit preprocessing transformers to the source input data.
 
         Args:
             data (DataFrame): Input data to fit transformers on.
         """
+        # Get the range of continuous features
         self.age_min_max = (data['age'].min(), data['age'].max())
         self.bmi_min_max = (data['bmi'].min(), data['bmi'].max())
         self.chl_min_max = (data['children'].min(), data['children'].max())
         
+        # Encode categorical features
         data = self.encode(data)
 
         # Fit the transformations
@@ -203,11 +206,14 @@ class Preprocessor:
 
 # Load environment variables
 load_dotenv()
-# # Get the model version from the environment
+# Get the path to the data from the environment
 path_to_data = os.getenv('PATH_TO_DATASET')
 
+# Load data
 csv = pd.read_csv(path_to_data)
 df = pd.DataFrame(csv)
 
+# Initialize the preprocessor
 preprocessor = Preprocessor()
+# Fit the preprocessor
 preprocessor.fit(df)

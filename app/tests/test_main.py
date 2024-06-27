@@ -7,6 +7,7 @@ import os
 load_dotenv()
 # Get the model version from the environment
 model_version = os.getenv('MODEL_VERSION', 'v1')
+
 # Import the correct model version dynamically
 model = __import__(f'model.{model_version}.model', fromlist=[''])
 

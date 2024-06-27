@@ -2,6 +2,12 @@
 
 This project deploys a machine learning model using FastAPI. The application provides a REST API to make predictions based on input data.
 
+# Application setup commands
+
+python -m venv env
+source env/bin/activate  # On Windows use `env\Scripts\activate` or `env\Scripts\Activate.ps1`
+pip install -r requirements.txt
+
 ## Project Structure
 
 ```plaintext

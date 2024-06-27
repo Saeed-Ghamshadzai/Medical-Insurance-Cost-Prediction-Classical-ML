@@ -31,16 +31,21 @@ except ImportError as e:
     logging.error(f'Failed to import model version {model_version}: {e}', exc_info=True)
     raise RuntimeError(f'Model version {model_version} not found')
 
+# Initialize the application
 app = FastAPI()
 
+# Get the API key from the environment
 API_KEY = os.getenv('API_KEY')
+# Add API key header
 api_key_header = APIKeyHeader(name='Authorization')
 
+# API key validation
 async def get_api_key(api_key: str = Depends(api_key_header)):
     if api_key != API_KEY:
         raise HTTPException(status_code=403, detail="Could not validate credentials")
     return api_key
 
+# Categorical datatypes for the post endpoint
 class Sex_type(str, Enum):
     male = "male"
     female = "female"
@@ -65,12 +70,14 @@ async def home(request: Request, api_key: APIKey = Depends(get_api_key)):
 
 @app.post("/prediction/")
 async def get_prediction(
+    # Determine datatypes
     Age: conint(ge=preprocessor.age_min_max[0], le=preprocessor.age_min_max[1]),
     Sex: Sex_type,
     Bmi: confloat(ge=preprocessor.bmi_min_max[0], le=preprocessor.bmi_min_max[1]),
     Children: conint(ge=preprocessor.chl_min_max[0], le=preprocessor.chl_min_max[1]),
     Smoker: Smoker_type,
     Region: Region_type,
+
     request: Request,
     api_key: APIKey = Depends(get_api_key)
     ):
@@ -87,10 +94,14 @@ async def get_prediction(
         'region': [Region.value]
         }
         
+        # Add a random value as target value to match the preprocessor's desired format
         input_data['charges'] = [0]
+        # Make dataframe
         input_data = pd.DataFrame.from_dict(input_data)
 
+        # Get the trained model
         regressor = model.load_model()
+        # Predict the target
         prediction = model.predictor(input_data, regressor)
 
         logging.info("Prediction made successfully")
@@ -129,5 +140,4 @@ if __name__ == "__main__":
     else:
         print("Tests ended successfully.")
 
-    # uvicorn.run(app, host="0.0.0.0", port=8080)
-    uvicorn.run(app, host="127.0.0.1", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=8080)

@@ -1,5 +1,3 @@
 from setuptools import setup, find_packages
 
 setup(name='packages', version='1.0', packages=find_packages())
-
-# cmd: pip install -e app\.
