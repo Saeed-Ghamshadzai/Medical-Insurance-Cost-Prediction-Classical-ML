@@ -94,7 +94,6 @@ poetry.lock
 poetry.toml
 
 # Environments
-.env
 .venv
 env/
 venv/
@@ -127,5 +126,6 @@ Thumbs.db
 
 # Docker-related files
 docker-compose.yml
+docker-compose.yaml
 Dockerfile
 .dockerignore
