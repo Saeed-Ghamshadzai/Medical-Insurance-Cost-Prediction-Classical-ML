@@ -14,7 +14,8 @@ Run these commands to set up your virtual environment:
 
     Install dependencies:
         pip install --upgrade pip
-        pip install -r requirements.txt 
+        pip install -r requirements.txt
+        pip install -e app\.
 
     Configure Environment Variables:
         cp app/.env.template app/.env
